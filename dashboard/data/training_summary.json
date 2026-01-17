@@ -1,0 +1,190 @@
+{
+    "sections": {
+        "1_environment": {
+            "libraries": [
+                "xgboost",
+                "shap",
+                "sklearn",
+                "pandas",
+                "matplotlib",
+                "seaborn",
+                "joblib"
+            ],
+            "status": "Success"
+        },
+        "2_data_loading": {
+            "status": "Data loaded successfully",
+            "shapes": {
+                "train": [
+                    8402,
+                    26
+                ],
+                "val": [
+                    1818,
+                    26
+                ],
+                "test": [
+                    1780,
+                    26
+                ]
+            }
+        },
+        "3_data_overview": {
+            "num_features": 21,
+            "target_dist": {
+                "0": 7793,
+                "1": 609
+            },
+            "defect_rate": 0.07248274220423709,
+            "cat_cols": [
+                "batch_id",
+                "recipe_id",
+                "press_id",
+                "machine_id",
+                "shift"
+            ],
+            "num_cols": [
+                "ambient_temp_c",
+                "ambient_humidity_pct",
+                "compound_batch_age_hr",
+                "mixer_energy_kwh",
+                "cure_temp_avg",
+                "cure_temp_std",
+                "cure_pressure_avg",
+                "cure_time_sec",
+                "tread_thickness_mm",
+                "sidewall_thickness_mm",
+                "tire_weight_kg",
+                "uniformity_rfv",
+                "uniformity_lfv",
+                "runout_mm",
+                "balance_g",
+                "visual_score"
+            ],
+            "preview_columns": [
+                "batch_id",
+                "recipe_id",
+                "press_id",
+                "machine_id",
+                "shift",
+                "ambient_temp_c",
+                "ambient_humidity_pct",
+                "compound_batch_age_hr",
+                "mixer_energy_kwh",
+                "cure_temp_avg",
+                "cure_temp_std",
+                "cure_pressure_avg",
+                "cure_time_sec",
+                "tread_thickness_mm",
+                "sidewall_thickness_mm",
+                "tire_weight_kg",
+                "uniformity_rfv",
+                "uniformity_lfv",
+                "runout_mm",
+                "balance_g",
+                "visual_score"
+            ]
+        },
+        "4_class_imbalance": {
+            "defect_rate_percent": "7.25%",
+            "scale_pos_weight": "12.80"
+        },
+        "5_preprocessing": {
+            "encoded_features_count": 349
+        },
+        "6_training": {
+            "best_iteration": 999,
+            "status": "Training with early stopping complete."
+        },
+        "7_evaluation": {
+            "test_metrics": {
+                "accuracy": 0.8797752808988764,
+                "precision": 0.12037037037037036,
+                "recall": 0.09848484848484848,
+                "f1": 0.10833333333333334,
+                "roc_auc": 0.5871028243601059,
+                "pr_auc": 0.10567562559649239
+            },
+            "classification_report": {
+                "0": {
+                    "precision": 0.9423543689320388,
+                    "recall": 0.9288277511961722,
+                    "f1-score": 0.9355421686746987,
+                    "support": 1672.0
+                },
+                "1": {
+                    "precision": 0.09848484848484848,
+                    "recall": 0.12037037037037036,
+                    "f1-score": 0.10833333333333334,
+                    "support": 108.0
+                },
+                "accuracy": 0.8797752808988764,
+                "macro avg": {
+                    "precision": 0.5204196087084436,
+                    "recall": 0.5245990607832713,
+                    "f1-score": 0.5219377510040161,
+                    "support": 1780.0
+                },
+                "weighted avg": {
+                    "precision": 0.891153296904906,
+                    "recall": 0.8797752808988764,
+                    "f1-score": 0.8853519696764587,
+                    "support": 1780.0
+                }
+            }
+        },
+        "8_global_shap": {
+            "status": "Generated summary and bar plots"
+        },
+        "9_local_shap": {
+            "sample_index": 3,
+            "predicted_prob": 0.5361119508743286,
+            "predicted_class": 1,
+            "actual_class": 0
+        },
+        "10_model_saving": {
+            "files": [
+                "preprocess.joblib",
+                "xgb_tire_defect_model.joblib"
+            ]
+        },
+        "11_threshold_tuning": [
+            {
+                "Threshold": 0.2,
+                "Precision": 0.09232954545454546,
+                "Recall": 0.41935483870967744,
+                "F1": 0.15133876600698487
+            },
+            {
+                "Threshold": 0.3,
+                "Precision": 0.09725685785536159,
+                "Recall": 0.25161290322580643,
+                "F1": 0.14028776978417265
+            },
+            {
+                "Threshold": 0.4,
+                "Precision": 0.10232558139534884,
+                "Recall": 0.14193548387096774,
+                "F1": 0.11891891891891893
+            },
+            {
+                "Threshold": 0.5,
+                "Precision": 0.1016949152542373,
+                "Recall": 0.07741935483870968,
+                "F1": 0.08791208791208792
+            },
+            {
+                "Threshold": 0.6,
+                "Precision": 0.1320754716981132,
+                "Recall": 0.04516129032258064,
+                "F1": 0.0673076923076923
+            },
+            {
+                "Threshold": 0.7,
+                "Precision": 0.21052631578947367,
+                "Recall": 0.025806451612903226,
+                "F1": 0.04597701149425287
+            }
+        ]
+    }
+}
